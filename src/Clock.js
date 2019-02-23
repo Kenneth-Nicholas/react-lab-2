@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Clock.css';
 
 class Clock extends React.Component {
 
@@ -7,7 +6,10 @@ class Clock extends React.Component {
 
         constructor(props) {
             super(props);
-            this.state = {date: new Date()};         
+            this.state = {
+                date: new Date(),
+                colors: ['red', 'green', 'blue']
+            };         
         }
 
     componentDidMount () {
@@ -28,12 +30,15 @@ class Clock extends React.Component {
     }
 
     render () {
+        const randomNumber = Math.floor(Math.random() * 3);
 
-        var integer = parseInt(this.state.date.toLocaleTimeString());
+        const color = this.state.colors[randomNumber];
+
+
             return (
                 <div>
                     <h1>My Second React Lab</h1>
-                    <h2>The time is {this.state.date.toLocaleTimeString ()}.</ h2>
+                    <h2>The time is <span className={color}>{this.state.date.toLocaleTimeString ()}</span>.</ h2>
                 </div>
             );
     } 
